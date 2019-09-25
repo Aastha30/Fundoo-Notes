@@ -1,0 +1,53 @@
+<app-toolbar></app-toolbar>
+<div class="register-container" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card class="registerCard">
+    <mat-card-header>
+      <mat-card-title fxLayout="column" fxLayoutAlign="center center" class="title">Register Page</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <div class="register-div" fxLayout="column" fxLayoutAlign="space-around center">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="Enter your First Name" [(ngModel)]="user.firstName" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Enter your Last Name" [(ngModel)]="user.lastName" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Enter your email" [formControl]="email" [(ngModel)]="user.emailID" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="user.password" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Mobile Number</mat-label>
+          <span matPrefix>+1 &nbsp;</span>
+          <input type="tel" matInput placeholder="Enter your mobile number" [(ngModel)]="user.mobNum"  length= "10" minlength="10" required>
+        </mat-form-field>
+
+        <mat-radio-group aria-label="Select an option" [(ngModel)]="user.gender">
+          <mat-label>Gender</mat-label>
+          <mat-radio-button value="Male">Male</mat-radio-button>
+          <mat-radio-button value="Female">Female</mat-radio-button>
+        </mat-radio-group>
+
+       
+          <button mat-raised-button color="primary" (click)="onRegister()">Register</button>
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

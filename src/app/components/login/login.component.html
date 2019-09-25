@@ -1,0 +1,31 @@
+<app-toolbar></app-toolbar>
+<div class="login-container" fxLayout="column" fxLayoutAlign="space-around center">
+  <mat-card class="logincard">
+    <mat-card-header>
+      <mat-card-title fxLayout="column" fxLayoutAlign="center center" class="title">Login Page</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <div class="login-div" fxLayout="column" fxLayoutAlign="space-around center">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Enter your email" [formControl]="email" [(ngModel)]="login.emailID" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="login.password" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+      
+        <button mat-raised-button color="primary" (click)="onLogin()">Login</button>
+        <a routerLink="/forgotpassword">forgot password ?</a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

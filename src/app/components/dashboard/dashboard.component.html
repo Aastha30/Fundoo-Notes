@@ -1,1 +1,130 @@
-<
+<div>
+  <mat-toolbar class="mat-toolbar">
+    <mat-toolbar-row>
+      <div fxLayoutAlign="start start">
+        <div>
+          <button mat-button (click)="drawer.toggle()" style="padding-left: 0px;">
+            <mat-icon >menu</mat-icon>
+          </button>
+        </div>
+        <div fxFlex="60" fxHide.xs>
+          <img mat-img class="logo" src="https://www.google.com/images/icons/product/keep-512.png">
+        </div>
+        <div class="element">
+          <span>Fundoo Keep</span>
+        </div>
+        <div>
+          <mat-card class="searchInput" routerLink="search" fxLayoutAlign="center center" routerLinkActive="active">
+            <button mat-icon-button class="searchButton">
+              <mat-icon>search</mat-icon>
+            </button>
+
+            <input mat-input class="searchInputBox" placeholder="Search" [(ngModel)]="search">
+            <button mat-icon-button (click)="clear()">
+              <mat-icon>clear</mat-icon>
+            </button>
+          </mat-card>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxFlex=30 fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxFlex=70 style="margin-left: 10%">
+
+          <button mat-icon-button>
+            <mat-icon>refresh</mat-icon>
+          </button>
+
+          <button mat-icon-button (click)="changeView(show)">
+            <mat-icon *ngIf="show">view_stream</mat-icon>
+            <mat-icon *ngIf="!show">view_module</mat-icon>
+          </button>
+
+          <button mat-icon-button>
+            <mat-icon>settings</mat-icon>
+          </button>
+        </div>
+        <div fxLayout="row" fxFlex=30>
+          <button mat-icon-button>
+            <mat-icon>apps</mat-icon>
+          </button>
+          <button mat-icon-button [matMenuTriggerFor]="profilePicMenu">
+
+            <img class="profileButton" src="/assets/images/nature.jpeg">
+
+          </button>
+
+<mat-menu #profilePicMenu="matMenu" xPosition="before">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+        </div>
+      </div>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-divider></mat-divider>
+  <div class="flexContainer" style="overflow-y: scroll; margin-right: -17px; box-sizing: unset;">
+    <mat-drawer-container class="sideMenu">
+      <mat-drawer #drawer mode="side" style="border:0px" disableClose>
+        <div fxLayout=column>
+          <button mat-raised-button class="menuButton" routerLink="notes" [disableRipple]="true">
+            <mat-icon style="margin-right:40px;margin-left:13px">
+              lightbulb_outline
+            </mat-icon>
+            Notes
+          </button>
+
+          <button mat-raised-button class="menuButton" [disableRipple]="true">
+            <mat-icon style="margin-right:40px;margin-left:13px">
+              notifications_none
+            </mat-icon>
+            Reminders
+          </button>
+          <mat-divider style="margin: 7px"></mat-divider>
+
+          <div>
+            <h4 class="labelStyle">LABELS</h4>
+          </div>
+          <div>
+          <button mat-button >
+              <mat-icon style="margin-right:40px;margin-left:13px">
+                create
+              </mat-icon>
+              Edit labels
+            </button>
+              
+          </div>
+
+          <mat-divider style="margin: 7px"></mat-divider>
+
+          <button mat-raised-button class="menuButton" [disableRipple]="true">
+              <mat-icon style="margin-right:40px;margin-left:13px">
+                  archive
+              </mat-icon>
+             Archive
+            </button>
+            
+            <button mat-raised-button class="menuButton" [disableRipple]="true">
+                <mat-icon style="margin-right:40px;margin-left:13px">
+                    delete_outline
+                </mat-icon>
+              Trash
+              </button>
+        </div>
+      </mat-drawer>
+    </mat-drawer-container>
+  </div>
+
+
+
+  <!-- <mat-sidenav-container fxFlexFill class="sidenavbar">
+      <mat-sidenav #sidenav mode='side' class="sidenav">
+        <mat-nav-list>
+    
+          <div fxLayout="column">
+            <button class="sidebar" mat-icon-button (click)="onNotes()">
+              <mat-icon class="icon2"> note</mat-icon>
+              Notes
+            </button> -->
+
+</div>

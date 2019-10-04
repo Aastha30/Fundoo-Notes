@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { VerfiyUserComponent } from './components/verfiy-user/verfiy-user.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { NotesComponent } from './components/notes/notes.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     ResetPasswordComponent,
     DashboardComponent,
     VerfiyUserComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,

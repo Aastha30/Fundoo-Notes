@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChangeViewService } from 'src/app/service/change-view.service';
+import { Label } from 'src/app/model/label.model';
+import { LabelService } from 'src/app/service/label.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,9 +11,11 @@ import { ChangeViewService } from 'src/app/service/change-view.service';
 export class DashboardComponent implements OnInit {
   show: boolean;
   search = '';
-  open: boolean;
+  labels: Label[];
 
-  constructor(private changeViewService: ChangeViewService) { }
+  constructor(private labelService: LabelService, private changeViewService: ChangeViewService) {
+    this. fetchLabels();
+  }
 
   ngOnInit() {
   }
@@ -27,6 +31,15 @@ export class DashboardComponent implements OnInit {
 
   openImageDialog() {
 
+  }
+
+  fetchLabels() {
+    this.labelService.fetchLabels().subscribe(
+      (response: any) => {
+        this.labels = response.body;
+        console.log(response);
+      }
+    );
   }
 
 

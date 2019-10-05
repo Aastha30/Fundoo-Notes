@@ -4,7 +4,7 @@
       <div fxLayoutAlign="start start">
         <div>
           <button mat-button (click)="drawer.toggle()" style="padding-left: 0px;">
-            <mat-icon >menu</mat-icon>
+            <mat-icon>menu</mat-icon>
           </button>
         </div>
         <div fxFlex="60" fxHide.xs>
@@ -49,14 +49,35 @@
           </button>
           <button mat-icon-button [matMenuTriggerFor]="profilePicMenu">
 
-            <img class="profileButton" src="/assets/images/nature.jpeg">
+            <img class="profilepic" src="assets/images/profile.jpg">
 
           </button>
 
-<mat-menu #profilePicMenu="matMenu" xPosition="before">
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
+          <mat-menu #profilePicMenu="matMenu" xPosition="before" style="padding:16px;">
+            <div fxLayout="column">
+              <div fxLayout="row" fxLayoutAlign="space-around start">
+                <div>
+                  
+                    <img class="profilePicButton" src="assets/images/profile.jpg" (click)="onPost()">
+                  
+                </div>
+                <div>
+                  <h5>Aastha Shree</h5>
+                  <h6>aasthashree30@gmail.com</h6>
+                </div>
+
+
+              </div>
+              <mat-divider style="margin-top: 7px;"></mat-divider>
+      
+              <div fxLayoutGap="20px" style="margin-top: 16px">
+                <button class="profileButton" mat-flat-button>Add account</button>
+                <button  class="profileButton"  mat-flat-button>Sign out</button>
+
+
+              </div>
+            </div>
+          </mat-menu>
         </div>
       </div>
 
@@ -80,51 +101,54 @@
             </mat-icon>
             Reminders
           </button>
-          <mat-divider style="margin: 7px"></mat-divider>
+          <mat-divider style="margin-top: 7px;"></mat-divider>
 
           <div>
             <h4 class="labelStyle">LABELS</h4>
           </div>
+            <div *ngIf="labels ? labels.length>0: false">
+              <div *ngFor="let label of labels">
+                <button mat-raised-button class="menuButton" [disableRipple]="true">
+                  <mat-icon style="margin-right:40px;margin-left:13px">
+                    <img src = "assets/icons/label-24px.svg">
+                  </mat-icon>
+                  {{label.labelName}}
+                </button>
+              </div>
+            </div>
+          <!-- </div> -->
           <div>
-          <button mat-button >
+            <button mat-raised-button class="editButton" [disableRipple]="true" > 
+              <!-- (click)="openDialog()"  -->
               <mat-icon style="margin-right:40px;margin-left:13px">
-                create
+                <img src="assets/icons/create-24px.svg">
               </mat-icon>
               Edit labels
             </button>
-              
+            
+
           </div>
 
-          <mat-divider style="margin: 7px"></mat-divider>
+          <mat-divider style="margin-top: 7px;"></mat-divider>
 
           <button mat-raised-button class="menuButton" [disableRipple]="true">
-              <mat-icon style="margin-right:40px;margin-left:13px">
-                  archive
-              </mat-icon>
-             Archive
-            </button>
-            
-            <button mat-raised-button class="menuButton" [disableRipple]="true">
-                <mat-icon style="margin-right:40px;margin-left:13px">
-                    delete_outline
-                </mat-icon>
-              Trash
-              </button>
+            <mat-icon style="margin-right:40px;margin-left:13px">
+               <img src ="assets/icons/archive-24px.svg">
+            </mat-icon>
+            Archive
+          </button>
+
+          <button mat-raised-button class="menuButton" [disableRipple]="true">
+            <mat-icon style="margin-right:40px;margin-left:13px">
+              delete_outline
+            </mat-icon>
+            Trash
+          </button>
         </div>
       </mat-drawer>
     </mat-drawer-container>
   </div>
 
 
-
-  <!-- <mat-sidenav-container fxFlexFill class="sidenavbar">
-      <mat-sidenav #sidenav mode='side' class="sidenav">
-        <mat-nav-list>
-    
-          <div fxLayout="column">
-            <button class="sidebar" mat-icon-button (click)="onNotes()">
-              <mat-icon class="icon2"> note</mat-icon>
-              Notes
-            </button> -->
 
 </div>

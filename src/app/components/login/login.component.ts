@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
     .subscribe(response => {
       if (response.statusCode === 200) {
         console.log(response);
+        localStorage.setItem('token', response.body.token);
         this.router.navigateByUrl('/dashboard');
       } else {
         console.log(response);

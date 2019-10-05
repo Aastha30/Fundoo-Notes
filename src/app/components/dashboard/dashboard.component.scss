@@ -67,19 +67,46 @@
   text-align: left;
   
 }
+.editButton {
+  display: flex;
+  width: 280px;
+  height: 45px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: none;
+  font-size: 15px;
+  text-align: left;
+
+
+}
 
 .menuButton:focus {
   background-color: rgba(236, 230, 173, 0.795);
 }
 
-.profileButton {
+.profilepic {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   margin-bottom: 0px;
   margin-left: 1px;
 }
+.profilePicButton {
+  width: 60px;
+  height: 55px;
+  border-radius: 50%;
+  margin-bottom: 0px;
+  margin-left: 1px;
 
+}
+.profileButton{
+  border: 0.5px solid rgb(233, 228, 228);
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.mat-fab-button {
+ outline: none;
+}
 .labelStyle {
   margin-left: 5px;
   
@@ -92,10 +119,19 @@
   text-transform: uppercase;
   padding: 0px 24px 10px;
 }
+
+
 mat-raised-button{
   padding-left: 0px;
 }
- ::ng-deep .mat-menu-content:not(:empty) {
-  padding-bottom: 0px; 
-  color: red;
+
+h5,h6 {
+margin: 0px;
 }
+.mat-menu-content{
+  padding: 16px;
+}
+// ::ng-deep .mat-menu-content:not(:empty) {
+
+// }
+ 

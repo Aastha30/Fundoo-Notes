@@ -1,24 +1,21 @@
-<div class="addnote">
+<div class="updatenote">
 
   <div>
-    <form>
-      <div data-text="Take a Note" class="textarea1">
-        <input matInput placeholder="Edit Title" [formControl]="title" [(ngModel)]="note.title" autocomplete="off" />
-      </div>
+      <textarea matInput class="notearea" style="font-weight: bold;
+        " [(ngModel)]="note.title" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="auto">
+          </textarea>
       <br>
-      <div data-text="Take a Note" contenteditable="true" class="textarea1">
-        <input matInput placeholder="Edit Description" [formControl]="description" [(ngModel)]="note.description"
-          autocomplete="off" />
-      </div>
-      <br>
-      <div>
-        <button class=close mat-button (click)="onClose()" fxLayoutAlign="start center">
-          <mat-icon> close</mat-icon>
-          Close
-        </button>
-        <!-- <app-icons></app-icons> -->
-      </div>
-    </form>
 
+      <textarea matInput class="notearea" [(ngModel)]="note.description" cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="auto">
+          </textarea>
+
+      <button class=close mat-button (click)="onClose()" fxLayoutAlign="end end">
+        Close
+      </button>
+      <!-- <app-icons></app-icons> -->
   </div>
+  
+
 </div>

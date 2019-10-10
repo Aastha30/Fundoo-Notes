@@ -6,7 +6,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerfiyUserComponent } from './components/verfiy-user/verfiy-user.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
-import { NotesComponent } from './components/notes/notes.component';
+import { AddNotesComponent } from './components/addNotes/addNotes.component';
 import { Note } from './model/note.model';
 
 const routes: Routes = [
@@ -28,7 +28,7 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent, children: [
       {
-        path: '', component: NotesComponent
+        path: '', component: AddNotesComponent
       }
     ]
   },

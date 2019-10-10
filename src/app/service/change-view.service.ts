@@ -1,24 +1,28 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChangeViewService {
 
-  private view = new BehaviorSubject(false);
-  currentView = this.view.asObservable();
+  result: boolean;
+  subject = new Subject();
 
-  private xyz;
+  constructor() { }
 
-  constructor() {
+  getView() {
+    this.gridview();
+    return this.subject.asObservable();
   }
 
-  changeView() {
-    this.currentView.subscribe(
-      response =>
-      this.xyz = response
-    );
-    this.view.next(!this.xyz);
+  gridview() {
+    if (this.result) {
+      this.subject.next({ data: 'row' });
+      this.result = false;
+    } else {
+      this.subject.next({ data: 'column' });
+      this.result = true;
+    }
   }
 }

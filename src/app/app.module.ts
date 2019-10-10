@@ -16,8 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { VerfiyUserComponent } from './components/verfiy-user/verfiy-user.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { NotesComponent } from './components/notes/notes.component';
+import { AddNotesComponent } from './components/addNotes/addNotes.component';
 import { UpdateNoteComponent } from './components/update-note/update-note.component';
+import { NotesComponent } from './components/notes/notes.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { UpdateNoteComponent } from './components/update-note/update-note.compon
     DashboardComponent,
     VerfiyUserComponent,
     ToolbarComponent,
+    AddNotesComponent,
     NotesComponent,
     UpdateNoteComponent
   ],
@@ -43,7 +45,10 @@ import { UpdateNoteComponent } from './components/update-note/update-note.compon
     FlexLayoutModule,
     HttpClientModule
   ],
+  entryComponents: [
+    UpdateNoteComponent
+  ],
   providers: [UserService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -8,6 +8,7 @@ import {
 } from '@angular/material';
 
 
+
 @NgModule({
   exports: [
     MatInputModule,
@@ -23,6 +24,7 @@ import {
     MatRippleModule,
     MatDialogModule,
     MatSnackBarModule
-  ]
+  ],
+  declarations: []
 })
 export class MaterialModule { }

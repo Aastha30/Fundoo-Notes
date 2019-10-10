@@ -17,7 +17,15 @@ export class NoteService {
   }
 
   fetchNotes(): any {
-    return this.http.get<Note[]>(this.url + 'fetch', httpOptions ); 
+    return this.http.get<Note[]>(this.url + 'fetch', httpOptions );
+  }
+
+  fetchArchivedNotes(): any {
+    return this.http.get<Note[]>(this.url + 'fetchArchive', httpOptions );
+  }
+
+  fetchTrashedNotes(): any {
+    return this.http.get<Note[]>(this.url + 'fetchTrashe', httpOptions );
   }
 }
 

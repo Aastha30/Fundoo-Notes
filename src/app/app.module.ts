@@ -17,6 +17,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { VerfiyUserComponent } from './components/verfiy-user/verfiy-user.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { NotesComponent } from './components/notes/notes.component';
+import { UpdateNoteComponent } from './components/update-note/update-note.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NotesComponent } from './components/notes/notes.component';
     DashboardComponent,
     VerfiyUserComponent,
     ToolbarComponent,
-    NotesComponent
+    NotesComponent,
+    UpdateNoteComponent
   ],
   imports: [
     BrowserModule,

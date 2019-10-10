@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerfiyUserComponent } from './components/verfiy-user/verfiy-user.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { NotesComponent } from './components/notes/notes.component';
+import { Note } from './model/note.model';
 
 const routes: Routes = [
   {
@@ -25,7 +26,11 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent, children: [
+      {
+        path: '', component: NotesComponent
+      }
+    ]
   },
   {
     path: 'forgotpassword',
@@ -39,10 +44,10 @@ const routes: Routes = [
     path: 'resetpassword/:token',
     component: ResetPasswordComponent
   },
-  {
-    path: 'notes',
-    component: NotesComponent
-  }
+  // {
+  //   path: 'notes',
+  //   component: NotesComponent
+  // }
 
 
 ];

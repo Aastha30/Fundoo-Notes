@@ -12,9 +12,13 @@ export class DashboardComponent implements OnInit {
   show: boolean;
   search = '';
   labels: Label[];
+  emailID: string;
+  fullName: string;
 
   constructor(private labelService: LabelService, private changeViewService: ChangeViewService) {
     this. fetchLabels();
+    this.emailID = localStorage.getItem('emailID');
+    this.fullName = localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName');
   }
 
   ngOnInit() {
@@ -41,6 +45,5 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
-
 
 }

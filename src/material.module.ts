@@ -2,14 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MatInputModule, MatCardModule, MatButtonModule,
-  MatIconModule, MatToolbarModule, MatMenuModule, MatDividerModule, MatRippleModule, MatDialogModule
+  MatIconModule, MatToolbarModule, MatMenuModule,
+  MatDividerModule, MatRippleModule, MatDialogModule,
+  MatSnackBarModule, MatRadioModule, MatSidenavModule
 } from '@angular/material';
-
-
-import { MatRadioModule } from '@angular/material/radio';
-
-
-import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -25,7 +21,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatMenuModule,
     MatDividerModule,
     MatRippleModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule { }

@@ -8,7 +8,7 @@
           </button>
         </div>
         <div fxFlex="60" fxHide.xs>
-          <img mat-img class="logo" src="https://www.google.com/images/icons/product/keep-512.png">
+          <img mat-img class="logo" src="assets/images/keepimage.png">
         </div>
         <div class="element">
           <span>Fundoo Keep</span>
@@ -57,22 +57,24 @@
             <div fxLayout="column">
               <div fxLayout="row" fxLayoutAlign="space-around start">
                 <div>
-                  
-                    <img class="profilePicButton" src="assets/images/profile.jpg" (click)="onPost()">
-                  
+
+                  <img class="profilePicButton" src="assets/images/profile.jpg" (click)="onPost()">
+
                 </div>
-                <div>
-                  <h5>Aastha Shree</h5>
-                  <h6>aasthashree30@gmail.com</h6>
+                <div fxLayout="column">
+                  <span class="userNameStyle">{{fullName}}</span>
+                  <span class="emailStyle">{{emailID}}</span>
+                  <!-- <h5>Aastha Shree</h5>
+                  <h6>aasthashree30@gmail.com</h6> -->
                 </div>
 
 
               </div>
               <mat-divider style="margin-top: 7px;"></mat-divider>
-      
+
               <div fxLayoutGap="20px" style="margin-top: 16px">
                 <button class="profileButton" mat-flat-button>Add account</button>
-                <button  class="profileButton"  mat-flat-button>Sign out</button>
+                <button class="profileButton" (click)="logout()" mat-flat-button>Sign out</button>
 
 
               </div>
@@ -106,26 +108,26 @@
           <div>
             <h4 class="labelStyle">LABELS</h4>
           </div>
-            <div *ngIf="labels ? labels.length>0: false">
-              <div *ngFor="let label of labels">
-                <button mat-raised-button class="menuButton" [disableRipple]="true">
-                  <mat-icon style="margin-right:40px;margin-left:13px">
-                    <img src = "assets/icons/label-24px.svg">
-                  </mat-icon>
-                  {{label.labelName}}
-                </button>
-              </div>
+          <div *ngIf="labels ? labels.length>0: false">
+            <div *ngFor="let label of labels">
+              <button mat-raised-button class="menuButton" [disableRipple]="true">
+                <mat-icon style="margin-right:40px;margin-left:13px">
+                  <img src="assets/icons/label-24px.svg">
+                </mat-icon>
+                {{label.labelName}}
+              </button>
             </div>
+          </div>
           <!-- </div> -->
           <div>
-            <button mat-raised-button class="editButton" [disableRipple]="true" > 
+            <button mat-raised-button class="editButton" [disableRipple]="true">
               <!-- (click)="openDialog()"  -->
               <mat-icon style="margin-right:40px;margin-left:13px">
                 <img src="assets/icons/create-24px.svg">
               </mat-icon>
               Edit labels
             </button>
-            
+
 
           </div>
 
@@ -133,7 +135,7 @@
 
           <button mat-raised-button class="menuButton" [disableRipple]="true">
             <mat-icon style="margin-right:40px;margin-left:13px">
-               <img src ="assets/icons/archive-24px.svg">
+              <img src="assets/icons/archive-24px.svg">
             </mat-icon>
             Archive
           </button>
@@ -146,7 +148,11 @@
           </button>
         </div>
       </mat-drawer>
-    </mat-drawer-container>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+
   </div>
 
 

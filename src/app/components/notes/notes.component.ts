@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NoteService } from 'src/app/service/note.service';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
 import { MatDialog } from '@angular/material';
+import { ChangeViewService } from 'src/app/service/change-view.service';
 
 @Component({
   selector: 'app-notes',
@@ -11,13 +12,20 @@ import { MatDialog } from '@angular/material';
 export class NotesComponent implements OnInit {
   notes = [];
   view: any;
+  direction: any;
 
-  constructor(private noteService: NoteService, private dialog: MatDialog) { }
+  constructor(private noteService: NoteService, private dialog: MatDialog, private changeViewService: ChangeViewService) { }
 
   ngOnInit() {
     this.fetchNotes();
+    this.changeViewService.getView().subscribe(
+    (res) => {
+                this.view = res;
+                this.direction = this.view.data;
+                console.log(this.direction);
+      });
 
-  }
+ }
 
   fetchNotes() {
     this.noteService.fetchNotes().subscribe(
@@ -37,7 +45,7 @@ export class NotesComponent implements OnInit {
           data: {
                  title: note.title,
                   description: note.description,
-                  noteId: note.noteId
+                  noteID: note.noteID
                 }
 
         });

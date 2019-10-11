@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Note } from '../model/note.model';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
-const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json', token: localStorage.getItem('token')})} ;
+const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', token: localStorage.getItem('token') }) };
 @Injectable({
   providedIn: 'root'
 })
@@ -17,15 +17,19 @@ export class NoteService {
   }
 
   fetchNotes(): any {
-    return this.http.get<Note[]>(this.url + 'fetch', httpOptions );
+    return this.http.get<Note[]>(this.url + 'fetch', httpOptions);
+  }
+
+  updateNotes( note: any, noteID: number): any {
+    return this.http.put<Note[]>(this.url + 'update/' + noteID, note, httpOptions);
   }
 
   fetchArchivedNotes(): any {
-    return this.http.get<Note[]>(this.url + 'fetchArchive', httpOptions );
+    return this.http.get<Note[]>(this.url + 'fetchArchive', httpOptions);
   }
 
   fetchTrashedNotes(): any {
-    return this.http.get<Note[]>(this.url + 'fetchTrashe', httpOptions );
+    return this.http.get<Note[]>(this.url + 'fetchTrashe', httpOptions);
   }
 }
 

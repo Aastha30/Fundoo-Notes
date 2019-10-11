@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { NoteService } from 'src/app/service/note.service';
 import { Note } from 'src/app/model/note.model';
 
@@ -11,13 +11,18 @@ import { Note } from 'src/app/model/note.model';
   styleUrls: ['./addNotes.component.scss']
 })
 export class AddNotesComponent implements OnInit {
-  note = new Note();
+  note: any;
   expand = false;
-  title = new FormControl();
-  description = new FormControl();
+  formGroup: FormGroup;
   constructor(private snackbar: MatSnackBar, private noteService: NoteService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    this.formGroup = new FormGroup(
+      {
+        title: new FormControl(''),
+        description: new FormControl('')
+      }
+    );
   }
 
   expandNote() {
@@ -25,11 +30,12 @@ export class AddNotesComponent implements OnInit {
   }
 
   onClose() {
+    this.note = this.formGroup.value;
     this.expand = false;
-    if (this.note.title !== undefined || this.note.description !== undefined) {
+    if (this.note.title !== '' || this.note.description !== '') {
       console.log(this.note);
-      return this.noteService.createNote(this.note)
-        .subscribe(response => {
+      this.noteService.createNote(this.note)
+        .subscribe((response: any) => {
           if (response.statusCode === 200) {
             console.log(response);
             this.snackbar.open(response.statusMessage, 'undo', { duration: 2500 });
@@ -38,6 +44,5 @@ export class AddNotesComponent implements OnInit {
           }
         });
     }
-
   }
 }

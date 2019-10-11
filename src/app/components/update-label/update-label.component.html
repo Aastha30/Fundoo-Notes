@@ -1,0 +1,17 @@
+<div class=button *ngFor="let label of label">
+  <div fxLayout="row" fxFlex=100>
+      <div fxFlex=30>
+          <button mat-icon-button (click)="delete(label)">
+              <mat-icon> delete</mat-icon>
+          </button>
+      </div>
+      <div fxFlex=40 class=text>
+          <input matInput placeholder="LabelName" [(ngModel)]="label.labelName">
+      </div>
+      <div fxFlex=30>
+          <button mat-icon-button (click)="update(label)">
+              <mat-icon> edit</mat-icon>
+          </button>
+      </div>
+  </div>
+</div>

@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
+import { Router } from '@angular/router';
+import { NoteService } from 'src/app/service/note.service';
 
 @Component({
   selector: 'app-update-note',
@@ -6,10 +10,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./update-note.component.scss']
 })
 export class UpdateNoteComponent implements OnInit {
+  note: [];
+  title = new FormControl(this.data.title);
+  noteID = this.data.noteID;
+  description = new FormControl(this.data.description);
 
-  constructor() { }
+  constructor( public dialogRef: MatDialogRef<UpdateNoteComponent>, private snackbar: MatSnackBar,
+               private noteService: NoteService, private router: Router,
+               @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.note = data;
+  }
 
   ngOnInit() {
   }
+  onClose() {
+    console.log(this.data);
+    this.noteService.updateNotes(this.note, this.noteID)
+      .subscribe((response: any) => {
 
+        if (response.statusCode === 200) {
+          console.log(response);
+          this.snackbar.open(response.statusMessage, 'undo', { duration: 2500 });
+        } else {
+          console.log(response);
+        }
+      });
+    this.dialogRef.close();
+  }
 }

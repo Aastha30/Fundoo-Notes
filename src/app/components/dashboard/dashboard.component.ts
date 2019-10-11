@@ -4,6 +4,8 @@ import { Label } from 'src/app/model/label.model';
 import { LabelService } from 'src/app/service/label.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { MatDialog } from '@angular/material';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -11,8 +13,10 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+  appName: string;
   list: boolean;
-  grid: boolean;
+  grid = true;
   search = '';
   labels: Label[];
   emailID: string;
@@ -20,7 +24,8 @@ export class DashboardComponent implements OnInit {
   private messageSource = new BehaviorSubject('default message');
   currentMessage = this.messageSource.asObservable();
 
-  constructor(private labelService: LabelService, private router: Router, private changeViewService: ChangeViewService) {
+  constructor(private labelService: LabelService, private dialog: MatDialog,
+              private router: Router, private changeViewService: ChangeViewService) {
     this.fetchLabels();
     this.emailID = localStorage.getItem('emailID');
     this.fullName = localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName');
@@ -61,5 +66,7 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+
+
 
 }

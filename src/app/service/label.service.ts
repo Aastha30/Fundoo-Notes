@@ -16,4 +16,8 @@ export class LabelService {
   fetchLabels(): any {
     return this.http.get<Label[]>(this.url + 'fetch', httpOptions );
   }
+
+  updateLabels(label: Label , labelID: number): any {
+    return this.http.put<Label[]>(this.url + 'update/' + labelID , label  , httpOptions);
+  }
 }

@@ -19,6 +19,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { AddNotesComponent } from './components/addNotes/addNotes.component';
 import { UpdateNoteComponent } from './components/update-note/update-note.component';
 import { NotesComponent } from './components/notes/notes.component';
+import { UpdateLabelComponent } from './components/update-label/update-label.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { NotesComponent } from './components/notes/notes.component';
     ToolbarComponent,
     AddNotesComponent,
     NotesComponent,
-    UpdateNoteComponent
+    UpdateNoteComponent,
+    UpdateLabelComponent
   ],
   imports: [
     BrowserModule,

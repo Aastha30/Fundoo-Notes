@@ -120,9 +120,9 @@
           </div>
           <!-- </div> -->
           <div>
-            <button mat-raised-button class="editButton" [disableRipple]="true">
-              <!-- (click)="openDialog()"  -->
-              <mat-icon style="margin-right:40px;margin-left:13px">
+            <button mat-raised-button class="editButton" (click)="onEditLabel" [disableRipple]="true">
+              
+              <mat-icon  style="margin-right:40px;margin-left:13px">
                 <img src="assets/icons/create-24px.svg">
               </mat-icon>
               Edit labels

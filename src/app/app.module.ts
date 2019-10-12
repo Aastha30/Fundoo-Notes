@@ -20,6 +20,7 @@ import { AddNotesComponent } from './components/addNotes/addNotes.component';
 import { UpdateNoteComponent } from './components/update-note/update-note.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { UpdateLabelComponent } from './components/update-label/update-label.component';
+import { IconsComponent } from './components/icons/icons.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { UpdateLabelComponent } from './components/update-label/update-label.com
     AddNotesComponent,
     NotesComponent,
     UpdateNoteComponent,
-    UpdateLabelComponent
+    UpdateLabelComponent,
+    IconsComponent
   ],
   imports: [
     BrowserModule,

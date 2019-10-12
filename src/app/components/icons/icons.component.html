@@ -1,0 +1,63 @@
+<div class="icons" fxLayout=layout-wrap>
+
+  <button mat-icon-button (click)="add_alert()" [matMenuTriggerFor]="Menu1">
+    <mat-icon class="icon">
+      <img src="assets/icons/add_alert-24px.svg">
+    </mat-icon>
+  </button>
+
+  <button mat-icon-button (click)="person_add()">
+    <mat-icon class="icon">
+      <img src="assets/icons/person_add-24px.svg">
+    </mat-icon>
+  </button>
+
+  <button mat-icon-button (click)="color_lens()" [matMenuTriggerFor]="Menu3">
+    <mat-icon class="icon">
+      <img src="assets/icons/color_lens-24px.svg">
+    </mat-icon>
+  </button>
+
+  <mat-menu #Menu3="matMenu" yPosition="above">
+      <div *ngFor="let colors of  arrayColor" fxLayout="row">
+        <div *ngFor="let color of colors" >
+      <button [ngStyle]="{'background-color':color.hexcode}" mat-mini-fab (click)=setColor(color.name)></button>
+    </div>
+    </div>
+    </mat-menu>
+  <button mat-icon-button (click)=" insert_photo()">
+    <mat-icon class="icon">
+      <img src="assets/icons/insert_photo-24px.svg">
+    </mat-icon>
+  </button>
+
+  <button mat-icon-button (click)="archive()">
+    <mat-icon class="icon">
+      <img src="assets/icons/archive-24px.svg">
+    </mat-icon>
+  </button>
+
+  <button mat-icon-button (click)=" more-vert()">
+    <mat-icon class="icon">more_vert</mat-icon>
+  </button>
+
+  <div>
+    <mat-menu #Menu1="matMenu">
+      <span style="font-family: sans-serif; font-size: 16px; color: black; margin-left: 10px;" >Reminder:</span>
+
+      <div class="reminder">
+        <div>
+          <button mat-icon-button (click)="onToday()">Later today</button>
+        </div>
+
+        <div>
+          <button mat-icon-button (click)="onTomorrow()">Tomorrow</button>
+        </div>
+
+        <div>
+          <button mat-icon-button (click)="onWeek()">Next week</button>
+        </div>
+      </div>
+    </mat-menu>
+  </div>
+</div>

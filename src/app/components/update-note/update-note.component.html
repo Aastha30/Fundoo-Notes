@@ -1,20 +1,22 @@
 <div class="updatenote">
 
-  <div>
+  <div >
+    <form>
       <textarea matInput class="notearea"
         placeholder="Title" [(ngModel)]="note.title" [formControl]="title" cdkTextareaAutosize
-                        #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="auto">
+                        #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10">
           </textarea>
       <br>
 
       <textarea matInput class="notearea1" placeholder="Note" [(ngModel)]="note.description" [formControl]="description" cdkTextareaAutosize
-      #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="auto">
+      #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="15">
           </textarea>
 
-      <button class=close mat-button (click)="onClose()" fxLayoutAlign="end end">
+      <button class=close mat-button (click)="onClose()">
         Close
       </button>
-      <!-- <app-icons></app-icons> -->
+      <app-icons></app-icons>
+    </form>
   </div>
   
 

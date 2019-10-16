@@ -13,11 +13,19 @@ export class LabelService {
 
   constructor(private http: HttpClient) { }
 
+  createLabel(label: any): any {
+    return this.http.post<Label[]>(this.url + 'create', label, httpOptions);
+  }
+
+  deleteLabel(labelID: number): any {
+    return this.http.delete(this.url + 'delete/' + labelID, httpOptions);
+  }
+
   fetchLabels(): any {
     return this.http.get<Label[]>(this.url + 'fetch', httpOptions );
   }
 
-  updateLabels(label: Label , labelID: number): any {
-    return this.http.put<Label[]>(this.url + 'update/' + labelID , label  , httpOptions);
+  updateLabel(label: Label): any {
+    return this.http.put<Label[]>(this.url + 'update', label  , httpOptions);
   }
 }

@@ -8,6 +8,10 @@ import { VerfiyUserComponent } from './components/verfiy-user/verfiy-user.compon
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { AddNotesComponent } from './components/addNotes/addNotes.component';
 import { Note } from './model/note.model';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
+import { NotesComponent } from './components/notes/notes.component';
+import { TrashComponent } from './components/trash/trash.component';
 
 const routes: Routes = [
   {
@@ -29,7 +33,23 @@ const routes: Routes = [
     component: DashboardComponent, children: [
       {
         path: '', component: AddNotesComponent
+      },
+      {
+        path: 'display', component: DisplayNotesComponent
+      },
+      {
+        path: 'editlabel', redirectTo: '/dashboard', pathMatch: 'full'
+      },
+      {
+        path: 'notes', redirectTo: '/dashboard', pathMatch: 'full'
+      },
+      {
+        path: 'archive', component: ArchiveComponent
+      },
+      {
+        path: 'trash', component: TrashComponent
       }
+
     ]
   },
   {
@@ -44,10 +64,6 @@ const routes: Routes = [
     path: 'resetpassword/:token',
     component: ResetPasswordComponent
   },
-  // {
-  //   path: 'notes',
-  //   component: NotesComponent
-  // }
 
 
 ];

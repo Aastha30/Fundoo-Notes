@@ -1,4 +1,4 @@
-<div class="icons" fxLayout=layout-wrap>
+<div>
 
   <button mat-icon-button (click)="add_alert()" [matMenuTriggerFor]="Menu1">
     <mat-icon class="icon">
@@ -21,7 +21,7 @@
   <mat-menu #Menu3="matMenu" yPosition="above">
       <div *ngFor="let colors of  arrayColor" fxLayout="row">
         <div *ngFor="let color of colors" >
-      <button [ngStyle]="{'background-color':color.hexcode}" mat-mini-fab (click)=setColor(color.name)></button>
+      <button [ngStyle]="{'background-color':color.hexcode}" mat-mini-fab (click)=changeColor(color.hexcode)></button>
     </div>
     </div>
     </mat-menu>
@@ -37,7 +37,7 @@
     </mat-icon>
   </button>
 
-  <button mat-icon-button (click)=" more-vert()">
+  <button mat-icon-button (click)=" more-vert()" [matMenuTriggerFor]="Menu4">
     <mat-icon class="icon">more_vert</mat-icon>
   </button>
 
@@ -57,6 +57,17 @@
         <div>
           <button mat-icon-button (click)="onWeek()">Next week</button>
         </div>
+      </div>
+    </mat-menu>
+  </div>
+
+  <div>
+    <mat-menu #Menu4="matMenu">
+      <div>
+        <button mat-icon-button (click)="deleteNote()" style="margin-left: 10px;">Delete note</button>
+      </div>
+      <div>
+        <button mat-icon-button (click)="addLabel()" style="margin-left: 10px;">Add Label</button>
       </div>
     </mat-menu>
   </div>

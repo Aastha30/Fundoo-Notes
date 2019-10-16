@@ -5,6 +5,7 @@ import { LabelService } from 'src/app/service/label.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { MatDialog } from '@angular/material';
+import { EditLabelComponent } from '../edit-label/edit-label.component';
 
 
 @Component({
@@ -66,7 +67,21 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+   onEditLabel() {
+    const dialogRef = this.dialog.open(EditLabelComponent, {
+      width: '315px',
+      height: 'auto',
+      data: this.labels,
+      panelClass: 'custom-dialog-container'
+    });
+  }
 
+  onArchive() {
+    this.router.navigateByUrl('/dashboard/archive');
+  }
+  onTrash() {
+    this.router.navigateByUrl('/dashboard/trash');
+  }
 
 
 }

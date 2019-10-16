@@ -1,21 +1,30 @@
-<div>
+<!-- <div>
     <div fxLayout="{{direction}} wrap" fxFlex="80" style="width: 504px;" class=side>
         <div *ngFor="let note of notes">
-            <mat-card class="matcard1" (click)="onUpdate(note)">
+            <mat-card class="matcard1"fxLayout="column" fxLayoutAlign="space-around center" [ngStyle]="{'background-color':note.color}">
 
-                <div>
-                    <textarea matInput class="notearea" style="font-weight: bold;" [(ngModel)]="note.title"
-                        cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-                        cdkAutosizeMaxRows="10" disabled></textarea>
-                    <br>
+                <div (click)="onUpdate(note)">
+                    <div>
+                        <textarea matInput class="notearea" style="font-weight: bold; padding: 12px 16px 0 16px;"
+                            [(ngModel)]="note.title" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" disabled [ngStyle]="{'background-color':note.color}"></textarea>
+                    </div>
 
-                    <textarea matInput class="notearea" [(ngModel)]="note.description" cdkTextareaAutosize
-                        #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="15"
-                        disabled></textarea>
+                    <div>
+                        <textarea matInput class="notearea" style=" padding: 4px 16px 12px 16px;"
+                            [(ngModel)]="note.description" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" disabled [ngStyle]="{'background-color':note.color}"></textarea>
 
+                    </div>
                 </div>
-                <app-icons></app-icons>
+               
+                    <div style="margin: 4px 0px;">
+                        <app-icons [note]="note"></app-icons>
+                    </div>
+               
+
             </mat-card>
         </div>
     </div>
-</div>
+</div> -->
+<app-display-notes [notes]="notes"></app-display-notes>

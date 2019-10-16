@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NoteService } from 'src/app/service/note.service';
 import { MatSnackBar } from '@angular/material';
+import { Note } from 'src/app/model/note.model';
 
 @Component({
   selector: 'app-icons',
@@ -9,7 +10,9 @@ import { MatSnackBar } from '@angular/material';
 })
 export class IconsComponent implements OnInit {
 
-  constructor() { }
+  @Input() note: any;
+
+  constructor(private noteService: NoteService, private snackBar: MatSnackBar) { }
 
   arrayColor = [
     [
@@ -17,10 +20,10 @@ export class IconsComponent implements OnInit {
         name: 'white', hexcode: '#ffffff '
       },
       {
-        name: 'orange', hexcode: '#f28b82'
+        name: 'light red', hexcode: '#f28b82'
       },
       {
-        name: 'yellow1', hexcode: '#fbbc04'
+        name: 'yellow', hexcode: '#fbbc04'
       },
       {
         name: 'lemonYellow', hexcode: '#fff475'
@@ -31,28 +34,28 @@ export class IconsComponent implements OnInit {
         name: 'lightGreen', hexcode: '#ccff90'
       },
       {
-        name: 'seaGreen', hexcode: '#a7ffeb'
+        name: 'Pale Turquoise', hexcode: '#a7ffeb'
       },
       {
         name: 'lightBlue', hexcode: '#cbf0f8'
       },
       {
-        name: 'violet', hexcode: '##aecbfa'
+        name: 'Pale Cornflower Blue', hexcode: '#aecbfa'
       },
     ],
     [
       {
-        name: 'purple', hexcode: '#d7aefb'
+        name: ' Pale Purple', hexcode: '#d7aefb'
       },
       {
-        name: 'lightPink', hexcode: ' #fdcfe8 '
+        name: 'Lavender Pink', hexcode: ' #fdcfe8 '
       },
       {
         name: 'beige', hexcode: '#e6c9a8 '
       }
       ,
       {
-        name: 'grey', hexcode: '#e8eaed'
+        name: 'Solitude', hexcode: '#e8eaed'
       }
     ],
   ];
@@ -61,4 +64,49 @@ export class IconsComponent implements OnInit {
   ngOnInit() {
   }
 
+  color_lens() {
+    console.log('Note Color');
+  }
+
+  changeColor(color: any) {
+    console.log('Inside change color: hex code:' + color);
+    this.note.color = color;
+    this.noteService.updateNotes(this.note).subscribe(
+      (response: any) => {
+        if (response.statusCode === 200) {
+          console.log(response);
+          this.snackBar.open(response.statusMessage, 'undo', { duration: 2500 });
+        } else {
+          console.log(response);
+        }
+      });
+  }
+
+  archive() {
+    this.note.archive = true;
+    this.noteService.updateNotes(this.note).subscribe(
+      (response: any) => {
+        if (response.statusCode === 200) {
+          console.log(response);
+          this.snackBar.open('Note archived', 'Undo', { duration: 2500});
+        } else {
+          console.log(response);
+        }
+      });
+  }
+
+  deleteNote() {
+    this.note.trash = true;
+    this.noteService.updateNotes(this.note).subscribe(
+      (response: any) => {
+        if (response.statusCode === 200) {
+          console.log(response);
+          this.snackBar.open('Note trashed', 'Undo', { duration: 2500});
+        } else {
+          console.log(response);
+        }
+      });
+
+  }
 }
+

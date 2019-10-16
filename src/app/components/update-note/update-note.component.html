@@ -1,23 +1,24 @@
-<div class="updatenote">
+<div class="updatenote" [ngStyle]="{'background-color':note.color}">
 
-  <div >
+  <div>
     <form>
-      <textarea matInput class="notearea"
-        placeholder="Title" [(ngModel)]="note.title" [formControl]="title" cdkTextareaAutosize
-                        #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10">
+      <textarea matInput class="notearea" placeholder="Title" [(ngModel)]="note.title" [formControl]="title"
+        cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10"
+        [ngStyle]="{'background-color':note.color}">
           </textarea>
       <br>
 
-      <textarea matInput class="notearea1" placeholder="Note" [(ngModel)]="note.description" [formControl]="description" cdkTextareaAutosize
-      #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="15">
+      <textarea matInput class="notearea1" placeholder="Note" [(ngModel)]="note.description" [formControl]="description"
+        cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="15"
+        [ngStyle]="{'background-color':note.color}">
           </textarea>
 
       <button class=close mat-button (click)="onClose()">
         Close
       </button>
-      <app-icons></app-icons>
+      <app-icons [note]="note"></app-icons>
     </form>
   </div>
-  
+
 
 </div>

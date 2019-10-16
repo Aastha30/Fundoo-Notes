@@ -10,7 +10,7 @@ import { NoteService } from 'src/app/service/note.service';
   styleUrls: ['./update-note.component.scss']
 })
 export class UpdateNoteComponent implements OnInit {
-  note: [];
+  note: any;
   title = new FormControl(this.data.title);
   noteID = this.data.noteID;
   description = new FormControl(this.data.description);
@@ -25,7 +25,7 @@ export class UpdateNoteComponent implements OnInit {
   }
   onClose() {
     console.log(this.data);
-    this.noteService.updateNotes(this.note, this.noteID)
+    this.noteService.updateNotes(this.note)
       .subscribe((response: any) => {
 
         if (response.statusCode === 200) {

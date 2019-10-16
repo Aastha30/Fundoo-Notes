@@ -19,8 +19,13 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { AddNotesComponent } from './components/addNotes/addNotes.component';
 import { UpdateNoteComponent } from './components/update-note/update-note.component';
 import { NotesComponent } from './components/notes/notes.component';
-import { UpdateLabelComponent } from './components/update-label/update-label.component';
 import { IconsComponent } from './components/icons/icons.component';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
+import { TrashComponent } from './components/trash/trash.component';
+import { EditLabelComponent } from './components/edit-label/edit-label.component';
+// import { TrashIconComponent } from './components/trash-icon/trash-icon.component';
+
 
 
 @NgModule({
@@ -36,8 +41,11 @@ import { IconsComponent } from './components/icons/icons.component';
     AddNotesComponent,
     NotesComponent,
     UpdateNoteComponent,
-    UpdateLabelComponent,
-    IconsComponent
+    IconsComponent,
+    ArchiveComponent,
+    DisplayNotesComponent,
+    TrashComponent,
+    EditLabelComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +58,8 @@ import { IconsComponent } from './components/icons/icons.component';
     HttpClientModule
   ],
   entryComponents: [
-    UpdateNoteComponent
+    UpdateNoteComponent,
+    EditLabelComponent
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

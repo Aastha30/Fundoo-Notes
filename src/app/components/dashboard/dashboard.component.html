@@ -64,8 +64,6 @@
                 <div fxLayout="column">
                   <span class="userNameStyle">{{fullName}}</span>
                   <span class="emailStyle">{{emailID}}</span>
-                  <!-- <h5>Aastha Shree</h5>
-                  <h6>aasthashree30@gmail.com</h6> -->
                 </div>
 
 
@@ -118,9 +116,9 @@
               </button>
             </div>
           </div>
-          <!-- </div> -->
+          
           <div>
-            <button mat-raised-button class="editButton" (click)="onEditLabel" [disableRipple]="true">
+            <button mat-raised-button class="editButton" (click)="onEditLabel()" [disableRipple]="true">
               
               <mat-icon  style="margin-right:40px;margin-left:13px">
                 <img src="assets/icons/create-24px.svg">
@@ -133,14 +131,14 @@
 
           <mat-divider style="margin-top: 7px;"></mat-divider>
 
-          <button mat-raised-button class="menuButton" [disableRipple]="true">
+          <button mat-raised-button class="menuButton" (click)="onArchive()" [disableRipple]="true">
             <mat-icon style="margin-right:40px;margin-left:13px">
               <img src="assets/icons/archive-24px.svg">
             </mat-icon>
             Archive
           </button>
 
-          <button mat-raised-button class="menuButton" [disableRipple]="true">
+          <button mat-raised-button class="menuButton" (click)="onTrash()" [disableRipple]="true">
             <mat-icon style="margin-right:40px;margin-left:13px">
               delete_outline
             </mat-icon>

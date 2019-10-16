@@ -1,0 +1,40 @@
+<div>
+  <div fxLayout="{{direction}} wrap" fxFlex="80" style="width: 504px;" class=side>
+    <div *ngFor="let note of trashNotes">
+      <mat-card class="matcard1" fxLayout="column" fxLayoutAlign="space-around center"
+        [ngStyle]="{'background-color':note.color}">
+
+        <div (click)="onUpdate(note)">
+          <div>
+            <textarea matInput class="notearea" style="font-weight: bold; padding: 12px 16px 0 16px;"
+              [(ngModel)]="note.title" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="5" disabled [ngStyle]="{'background-color':note.color}"></textarea>
+          </div>
+
+          <div>
+            <textarea matInput class="notearea" style=" padding: 4px 16px 12px 16px;" [(ngModel)]="note.description"
+              cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" disabled
+              [ngStyle]="{'background-color':note.color}"></textarea>
+
+          </div>
+        </div>
+          <div style="margin: 4px 0px; align-self: flex-start;">
+            <button mat-icon-button [matMenuTriggerFor]="Menu1">
+              <mat-icon >more_vert</mat-icon>
+            </button>
+          </div>
+          <mat-menu #Menu1="matMenu">
+              <div class=button>
+                <button mat-icon-button (click)="onDelete(note.noteID)">Delete forever</button>
+              </div>
+              <div class=button>
+                <button mat-icon-button (click)="onRestore(note)">Restore</button>
+              </div>
+            </mat-menu>
+
+          <!-- <div class ="appicons" style="margin: 4px 0px; align-self: flex-start;"> -->
+              <!-- <app-trash-icon [note]=trashedNotes></app-trash-icon> -->
+      </mat-card>
+    </div>
+  </div>
+</div>

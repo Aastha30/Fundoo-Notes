@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ChangeViewService } from 'src/app/service/change-view.service';
 import { UpdateNoteComponent } from '../update-note/update-note.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { NoteService } from 'src/app/service/note.service';
 
 @Component({
   selector: 'app-display-notes',
@@ -12,7 +13,8 @@ export class DisplayNotesComponent implements OnInit {
 @Input() notes: any;
   view: any;
   direction: any;
-  constructor(private changeViewService: ChangeViewService, private dialog: MatDialog) { }
+  constructor(private noteService: NoteService, private changeViewService: ChangeViewService,
+              private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
 
@@ -34,5 +36,13 @@ export class DisplayNotesComponent implements OnInit {
       panelClass: 'custom-dialog-container'
     });
   }
-
+  onRemoveReminder(note: any) {
+    this.noteService.removeReminder(note.noteID)
+      .subscribe((response: any) => {
+        console.log(response.body);
+        if (response.statusCode === 200) {
+          this.snackBar.open(response.statusMessage, 'Undo', { duration: 2500 });
+        }
+      });
+}
 }

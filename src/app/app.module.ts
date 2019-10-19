@@ -24,7 +24,7 @@ import { ArchiveComponent } from './components/archive/archive.component';
 import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { EditLabelComponent } from './components/edit-label/edit-label.component';
-// import { TrashIconComponent } from './components/trash-icon/trash-icon.component';
+import { ReminderComponent } from './components/reminder/reminder.component';
 
 
 
@@ -46,6 +46,7 @@ import { EditLabelComponent } from './components/edit-label/edit-label.component
     DisplayNotesComponent,
     TrashComponent,
     EditLabelComponent,
+    ReminderComponent,
   ],
   imports: [
     BrowserModule,

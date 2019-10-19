@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NoteService } from 'src/app/service/note.service';
 import { MatSnackBar } from '@angular/material';
 import { Note } from 'src/app/model/note.model';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-icons',
@@ -11,6 +12,7 @@ import { Note } from 'src/app/model/note.model';
 export class IconsComponent implements OnInit {
 
   @Input() note: any;
+  now = new Date();
 
   constructor(private noteService: NoteService, private snackBar: MatSnackBar) { }
 
@@ -64,6 +66,31 @@ export class IconsComponent implements OnInit {
   ngOnInit() {
   }
 
+  add_alert() {
+  }
+
+  setReminder(message: string) {
+    let tempDate: any;
+    let reminder: any;
+    if (message === 'today') {
+      tempDate = this.now;
+    } else if (message === 'tomorrow') {
+      tempDate = this.now.setDate(this.now.getDate() + 1);
+    } else if (message === 'week') {
+      tempDate = this.now.setDate(this.now.getDate() + 7);
+    }
+    reminder = formatDate(tempDate, 'yyyy-MM-ddT20:00:00', 'en-IND', '+5:30');
+    this.noteService.addReminder(this.note.noteID, reminder)
+      .subscribe((response: any) => {
+        if (response.statusCode === 200) {
+          this.snackBar.open(response.statusMessage, 'Undo', { duration: 2500 });
+          this.note = response.body;
+        } else {
+          this.snackBar.open(response.statusMessage, 'Undo', { duration: 2500 });
+        }
+        console.log(response);
+      });
+  }
   color_lens() {
     console.log('Note Color');
   }
@@ -83,12 +110,12 @@ export class IconsComponent implements OnInit {
   }
 
   archive() {
-    this.note.archive = true;
+    this.note.archive = !this.note.archive;
     this.noteService.updateNotes(this.note).subscribe(
       (response: any) => {
         if (response.statusCode === 200) {
           console.log(response);
-          this.snackBar.open('Note archived', 'Undo', { duration: 2500});
+          this.snackBar.open('Note archived', 'Undo', { duration: 2500 });
         } else {
           console.log(response);
         }
@@ -101,7 +128,7 @@ export class IconsComponent implements OnInit {
       (response: any) => {
         if (response.statusCode === 200) {
           console.log(response);
-          this.snackBar.open('Note trashed', 'Undo', { duration: 2500});
+          this.snackBar.open('Note trashed', 'Undo', { duration: 2500 });
         } else {
           console.log(response);
         }
@@ -109,4 +136,3 @@ export class IconsComponent implements OnInit {
 
   }
 }
-

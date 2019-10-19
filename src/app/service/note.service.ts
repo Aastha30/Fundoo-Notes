@@ -36,5 +36,17 @@ export class NoteService {
   fetchTrashedNotes(): any {
     return this.http.get<Note[]>(this.url + 'fetchTrash', httpOptions);
   }
+
+  addReminder(noteID: number, reminder: string): any {
+    return this.http.get(this.url + 'addReminder/' + noteID + '?reminder=' + reminder, httpOptions);
+  }
+
+  removeReminder(noteID: number): any {
+    return this.http.get(this.url + 'removeReminder/' + noteID , httpOptions);
+  }
+
+  fetchReminderNotes(): any {
+    return this.http.get(this.url + 'fetchReminder', httpOptions);
+  }
 }
 

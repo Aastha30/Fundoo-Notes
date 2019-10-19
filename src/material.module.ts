@@ -4,7 +4,7 @@ import {
   MatInputModule, MatCardModule, MatButtonModule,
   MatIconModule, MatToolbarModule, MatMenuModule,
   MatDividerModule, MatRippleModule, MatDialogModule,
-  MatSnackBarModule, MatRadioModule, MatSidenavModule
+  MatSnackBarModule, MatRadioModule, MatSidenavModule, MatChipsModule
 } from '@angular/material';
 
 
@@ -23,7 +23,8 @@ import {
     MatDividerModule,
     MatRippleModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatChipsModule
   ],
   declarations: []
 })

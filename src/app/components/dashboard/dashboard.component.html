@@ -95,7 +95,7 @@
             Notes
           </button>
 
-          <button mat-raised-button class="menuButton" [disableRipple]="true">
+          <button mat-raised-button class="menuButton" (click)="onReminder()" [disableRipple]="true">
             <mat-icon style="margin-right:40px;margin-left:13px">
               notifications_none
             </mat-icon>

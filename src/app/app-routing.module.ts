@@ -12,6 +12,7 @@ import { ArchiveComponent } from './components/archive/archive.component';
 import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { TrashComponent } from './components/trash/trash.component';
+import { ReminderComponent } from './components/reminder/reminder.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,9 @@ const routes: Routes = [
       },
       {
         path: 'trash', component: TrashComponent
+      },
+      {
+        path: 'reminder', component: ReminderComponent
       }
 
     ]

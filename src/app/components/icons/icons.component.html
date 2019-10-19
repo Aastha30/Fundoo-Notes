@@ -32,9 +32,8 @@
   </button>
 
   <button mat-icon-button (click)="archive()">
-    <mat-icon class="icon">
-      <img src="assets/icons/archive-24px.svg">
-    </mat-icon>
+      <mat-icon class="icon" *ngIf="!note.archive"><img src="assets/icons/archive-24px.svg"></mat-icon>
+      <mat-icon class="icon" *ngIf="note.archive"><img src="assets/icons/unarchive-24px.svg"></mat-icon>
   </button>
 
   <button mat-icon-button (click)=" more-vert()" [matMenuTriggerFor]="Menu4">
@@ -47,15 +46,15 @@
 
       <div class="reminder">
         <div>
-          <button mat-icon-button (click)="onToday()">Later today</button>
+          <button mat-icon-button (click)="setReminder('today')">Later today</button>
         </div>
 
         <div>
-          <button mat-icon-button (click)="onTomorrow()">Tomorrow</button>
+          <button mat-icon-button (click)="setReminder('tomorrow')">Tomorrow</button>
         </div>
 
         <div>
-          <button mat-icon-button (click)="onWeek()">Next week</button>
+          <button mat-icon-button (click)="setReminder('week')">Next week</button>
         </div>
       </div>
     </mat-menu>

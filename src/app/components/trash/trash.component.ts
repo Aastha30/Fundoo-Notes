@@ -47,7 +47,6 @@ export class TrashComponent implements OnInit {
     this.noteService.deleteNotes(noteID).subscribe(
       (response: any) => {
         if (response.statusCode === 200) {
-          this.trashNotes = response.body;
           console.log(response);
           this.snackBar.open(response.statusMessage, 'Undo', { duration: 2500});
         } else {
@@ -61,7 +60,7 @@ export class TrashComponent implements OnInit {
     this.noteService.updateNotes(note).subscribe(
       (response: any) => {
         if (response.statusCode === 200) {
-          this.trashNotes = response.body;
+          // this.trashNotes = response.body;
           console.log(response);
           this.snackBar.open('Note restored', 'Undo', { duration: 2500});
         } else {
@@ -71,4 +70,3 @@ export class TrashComponent implements OnInit {
 
   }
 }
-

@@ -1,7 +1,7 @@
 <div>
   <div fxLayout="{{direction}} wrap" fxFlex="80" style="width: 504px;" class=side>
       <div *ngFor="let note of notes">
-          <mat-card class="matcard1"fxLayout="column" fxLayoutAlign="space-around center" [ngStyle]="{'background-color':note.color}">
+          <mat-card class="matcard1" fxLayout="column" fxLayoutAlign="space-around center" [ngStyle]="{'background-color':note.color}">
 
               <div (click)="onUpdate(note)">
                   <div>
@@ -16,6 +16,15 @@
                           cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" disabled [ngStyle]="{'background-color':note.color}"></textarea>
 
                   </div>
+                  <div *ngIf="note.reminder!=null" class="chip-list">
+                        <mat-chip-list>
+                            <mat-chip [ngStyle]="{'background-color': note.color}">
+                                <mat-icon class="time-icon">access_times</mat-icon>
+                                {{note.reminder | date:'EEE MMM d, y, h:mm a'}}
+                                <mat-icon matChipRemove (click)="onRemoveReminder(note)">close</mat-icon>
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
               </div>
                   <div style="margin: 4px 0px;">
                       <app-icons [note]="note"></app-icons>

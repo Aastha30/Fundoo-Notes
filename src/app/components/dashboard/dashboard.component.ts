@@ -76,6 +76,10 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  onReminder() {
+    this.router.navigateByUrl('/dashboard/reminder');
+  }
+
   onArchive() {
     this.router.navigateByUrl('/dashboard/archive');
   }
